@@ -47,4 +47,4 @@ const famousTags = [
   "#style",
 ];
 
-module.exports = { Photo, photosArray };
+module.exports = { Photo, photosArray, famousTags };
