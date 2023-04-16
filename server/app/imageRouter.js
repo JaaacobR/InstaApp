@@ -7,6 +7,7 @@ const {
   delPhoto,
   patchPhoto,
   addTag,
+  addMassTags,
 } = require("./jsonController");
 
 const router = async (request, response) => {
@@ -19,7 +20,17 @@ const router = async (request, response) => {
         const photo = getPhoto(
           request.url.split("/")[request.url.split("/").length - 1]
         );
-        if (photo) response.write(photo);
+        if (photo) response.write(JSON.stringify(photo));
+        else {
+          response.writeHead(404, { "Content-Type": "text/html" });
+          response.write("ID not found!");
+        }
+      } else if (request.url.match(/\/api\/photos\/tags\/([0-9]+)/)) {
+        const photo = getPhoto(
+          request.url.split("/")[request.url.split("/").length - 1]
+        );
+        console.log(photo);
+        if (photo) response.end(JSON.stringify({ tags: photo.tags }, null, 5));
         else {
           response.writeHead(404, { "Content-Type": "text/html" });
           response.write("ID not found!");
@@ -65,6 +76,11 @@ const router = async (request, response) => {
       } else if (request.url == "/api/photos/tags") {
         const data = await getRequestData(request);
         const photo = addTag(JSON.parse(data));
+        console.log(photo);
+        response.end(JSON.stringify({ result: photo }));
+      } else if (request.url == "/api/photos/tags/mass") {
+        const data = await getRequestData(request);
+        const photo = addMassTags(JSON.parse(data));
         console.log(photo);
         response.end(JSON.stringify({ result: photo }));
       }

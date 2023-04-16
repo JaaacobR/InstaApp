@@ -10,10 +10,9 @@ module.exports = {
     return JSON.stringify(photosArray);
   },
   getPhoto: (id) => {
-    const photo = photosArray.find((item) => {
+    return (photo = photosArray.find((item) => {
       return item.id == id;
-    });
-    return JSON.stringify(photo);
+    }));
   },
 
   delPhoto: (id) => {
@@ -41,6 +40,16 @@ module.exports = {
     });
     if (!photo) return null;
     photo.tags = [...photo.tags, data.tag];
+    photo.update();
+    return photo;
+  },
+  addMassTags: (data) => {
+    if (!data.id) return null;
+    const photo = photosArray.find((item) => {
+      return item.id == parseInt(data.id);
+    });
+    if (!photo) return null;
+    photo.tags = [...photo.tags, ...data.tags];
     photo.update();
     return photo;
   },
