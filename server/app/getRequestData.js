@@ -1,22 +1,18 @@
 getRequestData = async (req) => {
+  return new Promise((resolve, reject) => {
+    try {
+      let body = "";
 
-    return new Promise((resolve, reject) => {
-        try {
+      req.on("data", (part) => {
+        body += part.toString();
+      });
 
-            let body = "";
-
-            req.on("data", (part) => {
-                body += part.toString();
-            });
-
-            req.on("end", () => {
-                resolve(body);
-            });
-
-        } catch (error) {
-            reject(error);
-        }
-    })
-
-}
-module.exports = getRequestData
+      req.on("end", () => {
+        resolve(body);
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+module.exports = getRequestData;

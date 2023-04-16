@@ -25,6 +25,8 @@ const tagsRouter = async (request, response) => {
     case "POST":
       if (request.url == "/api/tags") {
         const data = await getRequestData(request);
+        const r = tagsController.addTag(JSON.parse(data));
+        response.end(JSON.stringify({ r }, null, 5));
       }
       break;
     case "DELETE":

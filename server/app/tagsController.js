@@ -19,7 +19,12 @@ module.exports = {
   },
   addTag: (tag) => {
     const tagName = tag.name;
-    if (famousTags.find((tag) => (tagName = tag.name)) === undefined) {
+    console.log(tag, famousTags);
+   
+
+    if (
+      famousTags.find((famousTag) => tagName === famousTag) == undefined
+    ) {
       famousTags.push(tagName);
       return { ...tag, index: famousTags.length };
     } else {
