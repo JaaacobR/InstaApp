@@ -5,6 +5,7 @@ class Photo {
     this.originalName = originalName;
     this.url = url;
     this.lastChange = "original";
+    this.tags = [];
     this.history = [
       {
         status: "original",
