@@ -1,12 +1,12 @@
 const getRequestData = require("./getRequestData");
-const { getMetaData } = require("./imageActions");
+const { getMetaData, editPhoto } = require("./filtersController");
 const { getPhoto } = require("./jsonController");
 
 const router = async (request, response) => {
   switch (request.method) {
     case "GET":
       response.writeHead(200, { "Content-Type": "application/json" });
-      console.log("WYK", request.url);
+
       if (request.url.match(/\/api\/filters\/metadata\/([0-9]+)/)) {
         console.log(request.url);
         const photo = getPhoto(
@@ -22,6 +22,14 @@ const router = async (request, response) => {
       }
       break;
     case "PATCH":
+      response.writeHead(200, { "Content-Type": "application/json" });
+      if (request.url === "/api/filters") {
+        const data = await getRequestData(request);
+        console.log(data, "A");
+        const dataImage = JSON.parse(data);
+        console.log(dataImage);
+        await editPhoto(dataImage.url, dataImage.type, dataImage.params);
+      }
       break;
   }
   response.end();
