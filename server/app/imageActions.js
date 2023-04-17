@@ -1,11 +1,11 @@
 const sharp = require("sharp");
 
-imageActions = {
-  getMetaData: async (req, url) => {
+module.exports = {
+  getMetaData: async(url) => {
     return new Promise(async (resolve, reject) => {
       try {
         if (url) {
-          let meta = await sharp(url).metadata;
+          let meta = await sharp(url).metadata();
           resolve(meta);
         } else {
           resolve("url_not_found");
@@ -16,4 +16,3 @@ imageActions = {
     });
   },
 };
-module.exports = imageActions;

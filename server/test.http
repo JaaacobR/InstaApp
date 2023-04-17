@@ -98,3 +98,7 @@ PATCH http://localhost:3000/api/photos/tags/mass
 #######
 
 GET http://localhost:3000/api/photos/tags/1681643418823
+#####
+
+
+GET http://localhost:3000/api/filters/metadata/1681719519975
