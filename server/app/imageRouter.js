@@ -18,19 +18,6 @@ const router = async (request, response) => {
       if (request.url == "/api/photos") {
         response.writeHead(200, { "Content-Type": "application/json" });
         response.write(getPhotos());
-      } else if (request.url.match(/\/api\/photos\/([0-9]+)\/([a-z]+)/)) {
-        console.log(request.url.split("/")[request.url.split("/").length - 2]);
-        const photoID =
-          request.url.split("/")[request.url.split("/").length - 2];
-        const actionName =
-          request.url.split("/")[request.url.split("/").length - 1];
-        const changedPhoto = findChangedPhoto(actionName, photoID);
-        if (changedPhoto) {
-          const img = fs.readFileSync(changedPhoto.url);
-          response.writeHead(200, { "Content-Type": "image/jpg" });
-          response.write(img);
-          response.end();
-        }
       } else if (request.url.match(/\/api\/photos\/tags\/([0-9]+)/)) {
         response.writeHead(200, { "Content-Type": "application/json" });
         const photo = getPhoto(

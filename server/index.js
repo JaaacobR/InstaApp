@@ -2,6 +2,7 @@ const http = require("http");
 const imageRouter = require("./app/imageRouter");
 const tagsRouter = require("./app/tagsRouter");
 const filtersRouter = require("./app/filtersRouter");
+const fileRouter = require("./app/fileRouter");
 
 http
   .createServer(async (req, res) => {
@@ -11,6 +12,8 @@ http
       await tagsRouter(req, res);
     } else if (req.url.search("/api/filters") !== -1) {
       await filtersRouter(req, res);
+    } else if (req.url.search("/api/getfile") !== -1) {
+      await fileRouter(req, res);
     }
   })
   .listen(3000, () => console.log("listen on 3000"));
