@@ -76,7 +76,7 @@ PATCH http://localhost:3000/api/photos/tags
 PATCH http://localhost:3000/api/photos/tags/mass
 
 {
-  "id": 1681643418823,
+  "id": 1682077503471,
   "tags":[{
     "name": "newTag123126",
   "popularity": 10000
@@ -108,8 +108,12 @@ GET http://localhost:3000/api/filters/metadata/1681719519975
 PATCH http://localhost:3000/api/filters
 
 {
-  "id": 1682071827358,
-  "url":"/Users/jakub/Desktop/InstaApp/server/uploads/samochody/upload_1682071827357.jpg",
+  "id": 1682077650401,
+  "url":"/Users/jakub/Desktop/InstaApp/server/uploads/samochody/upload_1682077650401.jpg",
   "type": "tint",
   "params": {"r": 255, "g":0, "b":0}
 }
+
+####
+
+GET http://localhost:3000/api/photos/1682077650401/tint

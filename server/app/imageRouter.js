@@ -8,24 +8,31 @@ const {
   patchPhoto,
   addTag,
   addMassTags,
+  findChangedPhoto,
 } = require("./jsonController");
+const fs = require("fs");
 
 const router = async (request, response) => {
   switch (request.method) {
     case "GET":
-      response.writeHead(200, { "Content-Type": "application/json" });
       if (request.url == "/api/photos") {
+        response.writeHead(200, { "Content-Type": "application/json" });
         response.write(getPhotos());
-      } else if (request.url.match(/\/api\/photos\/([0-9]+)/)) {
-        const photo = getPhoto(
-          request.url.split("/")[request.url.split("/").length - 1]
-        );
-        if (photo) response.write(JSON.stringify(photo));
-        else {
-          response.writeHead(404, { "Content-Type": "text/html" });
-          response.write("ID not found!");
+      } else if (request.url.match(/\/api\/photos\/([0-9]+)\/([a-z]+)/)) {
+        console.log(request.url.split("/")[request.url.split("/").length - 2]);
+        const photoID =
+          request.url.split("/")[request.url.split("/").length - 2];
+        const actionName =
+          request.url.split("/")[request.url.split("/").length - 1];
+        const changedPhoto = findChangedPhoto(actionName, photoID);
+        if (changedPhoto) {
+          const img = fs.readFileSync(changedPhoto.url);
+          response.writeHead(200, { "Content-Type": "image/jpg" });
+          response.write(img);
+          response.end();
         }
       } else if (request.url.match(/\/api\/photos\/tags\/([0-9]+)/)) {
+        response.writeHead(200, { "Content-Type": "application/json" });
         const photo = getPhoto(
           request.url.split("/")[request.url.split("/").length - 1]
         );
@@ -35,13 +42,18 @@ const router = async (request, response) => {
           response.writeHead(404, { "Content-Type": "text/html" });
           response.write("ID not found!");
         }
-      } else if (request.url.match(/\/api\/photos\/([0-9]+)\/([a-z]+)/)) {
-        const photoID =
-          request.url.split("/")[request.url.split("/").length - 2];
-        const actionName =
-          request.url.split("/")[request.url.split("/").length - 1];
+      } else if (request.url.match(/\/api\/photos\/([0-9]+)/)) {
+        response.writeHead(200, { "Content-Type": "application/json" });
+        const photo = getPhoto(
+          request.url.split("/")[request.url.split("/").length - 1]
+        );
+        if (photo) response.write(JSON.stringify(photo));
+        else {
+          response.writeHead(404, { "Content-Type": "text/html" });
+          response.write("ID not found!");
+        }
       }
-      
+
       break;
     case "POST":
       response.writeHead(201, { "Content-Type": "application/json" });

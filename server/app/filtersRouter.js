@@ -35,7 +35,8 @@ const router = async (request, response) => {
           content: {
             status: dataImage.type,
             url:
-              request.url.slice(0, dataImage.url.lastIndexOf(".")) +
+              dataImage.url.slice(0, dataImage.url.lastIndexOf(".")) +
+              "-" +
               dataImage.type +
               ".jpg",
           },
