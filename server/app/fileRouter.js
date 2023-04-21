@@ -1,4 +1,4 @@
-const { findChangedPhoto } = require("./jsonController");
+const { findChangedPhoto, getPhoto } = require("./jsonController");
 const fs = require("fs");
 
 const router = async (request, response) => {
@@ -14,6 +14,16 @@ const router = async (request, response) => {
         const changedPhoto = findChangedPhoto(actionName, photoID);
         if (changedPhoto) {
           const img = fs.readFileSync(changedPhoto.url);
+          response.writeHead(200, { "Content-Type": "image/jpg" });
+          response.write(img);
+          response.end();
+        }
+      } else if (request.url.match(/\/api\/getfile\/([0-9]+)/)) {
+        const photoID =
+          request.url.split("/")[request.url.split("/").length - 1];
+        const photo = getPhoto(photoID);
+        if (photo) {
+          const img = fs.readFileSync(photo.url);
           response.writeHead(200, { "Content-Type": "image/jpg" });
           response.write(img);
           response.end();
