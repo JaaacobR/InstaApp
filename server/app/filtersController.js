@@ -26,17 +26,17 @@ const getAction = async (url, type, params) => {
           case "rotate":
             await sharp(url)
               .rotate(params)
-              .toFile(url + "-rotated" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-rotated" + ".jpg");
             break;
           case "resize":
             await sharp(url)
               .resize(params)
-              .toFile(url + "-resized" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-resized" + ".jpg");
             break;
           case "reformat":
             await sharp(url)
               .toFormat(params)
-              .toFile(url + "-rotated" + "." + format);
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-rotated" + "." + format);
             break;
           case "crop":
             await sharp(url)
@@ -46,7 +46,7 @@ const getAction = async (url, type, params) => {
           case "grayscale":
             await sharp(url)
               .grayscale()
-              .toFile(url + "-cropped" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-cropped" + ".jpg");
             break;
           case "tint":
             await sharp(url)
@@ -56,17 +56,17 @@ const getAction = async (url, type, params) => {
           case "negate":
             await sharp(url)
               .negate()
-              .toFile(url + "-negate" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-negate" + ".jpg");
             break;
           case "flip":
             await sharp(url)
               .flip()
-              .toFile(url + "-flipped" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-flipped" + ".jpg");
             break;
           case "flop":
             await sharp(url)
               .flop()
-              .toFile(url + "-flopped" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-flopped" + ".jpg");
             break;
         }
       } else {

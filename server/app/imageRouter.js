@@ -35,7 +35,13 @@ const router = async (request, response) => {
           response.writeHead(404, { "Content-Type": "text/html" });
           response.write("ID not found!");
         }
+      } else if (request.url.match(/\/api\/photos\/([0-9]+)\/([a-z]+)/)) {
+        const photoID =
+          request.url.split("/")[request.url.split("/").length - 2];
+        const actionName =
+          request.url.split("/")[request.url.split("/").length - 1];
       }
+      
       break;
     case "POST":
       response.writeHead(201, { "Content-Type": "application/json" });

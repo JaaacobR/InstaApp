@@ -20,10 +20,10 @@ class Photo {
   getId() {
     return this.id;
   }
-  update() {
+  update(data) {
     this.history.push({
-      status: "change " + this.history.length.toString(),
-      lastModifiedDate: Date.now(),
+      timestamp: Date.now(),
+      ...data,
     });
     this.lastChange = this.history[this.history.length - 1].status;
   }

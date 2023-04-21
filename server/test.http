@@ -20,7 +20,7 @@ GET http://localhost:3000/api/photos HTTP/1.1
 
 #########
 
-GET http://localhost:3000/api/photos/1681200839758 HTTP/1.1
+GET http://localhost:3000/api/photos/1682071171155 HTTP/1.1
 
 #########
 
@@ -108,7 +108,8 @@ GET http://localhost:3000/api/filters/metadata/1681719519975
 PATCH http://localhost:3000/api/filters
 
 {
-  "url":"/Users/jakub/Desktop/InstaApp/server/uploads/samochody/upload_1681749470294.jpg",
+  "id": 1682071827358,
+  "url":"/Users/jakub/Desktop/InstaApp/server/uploads/samochody/upload_1682071827357.jpg",
   "type": "tint",
   "params": {"r": 255, "g":0, "b":0}
 }
