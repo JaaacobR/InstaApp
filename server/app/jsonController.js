@@ -64,4 +64,7 @@ module.exports = {
     }
     return undefined;
   },
+  getPhotosByAlbum: (album) => {
+    return photosArray.filter((photo) => photo.album === album);
+  },
 };

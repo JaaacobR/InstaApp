@@ -9,6 +9,7 @@ const {
   addTag,
   addMassTags,
   findChangedPhoto,
+  getPhotosByAlbum,
 } = require("./jsonController");
 const fs = require("fs");
 
@@ -39,6 +40,14 @@ const router = async (request, response) => {
           response.writeHead(404, { "Content-Type": "text/html" });
           response.write("ID not found!");
         }
+      } else if (request.url.match(/\/api\/photos\/album\/([A-Za-z0-9]+)/)) {
+        const albumName =
+          request.url.split("/")[request.url.split("/").length - 1];
+        console.log("DUPA");
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(
+          JSON.stringify({ photos: getPhotosByAlbum(albumName) }, null, 5)
+        );
       }
 
       break;
