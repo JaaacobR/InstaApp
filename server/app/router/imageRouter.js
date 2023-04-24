@@ -20,18 +20,15 @@ const router = async (request, response) => {
         response.writeHead(200, { "Content-Type": "application/json" });
         response.write(getPhotos());
       } else if (request.url.match(/\/api\/photos\/tags\/([0-9]+)/)) {
-        response.writeHead(200, { "Content-Type": "application/json" });
         const photo = getPhoto(
           request.url.split("/")[request.url.split("/").length - 1]
         );
-        console.log(photo);
         if (photo) response.end(JSON.stringify({ tags: photo.tags }, null, 5));
         else {
           response.writeHead(404, { "Content-Type": "text/html" });
           response.write("ID not found!");
         }
       } else if (request.url.match(/\/api\/photos\/([0-9]+)/)) {
-        response.writeHead(200, { "Content-Type": "application/json" });
         const photo = getPhoto(
           request.url.split("/")[request.url.split("/").length - 1]
         );
@@ -43,8 +40,7 @@ const router = async (request, response) => {
       } else if (request.url.match(/\/api\/photos\/album\/([A-Za-z0-9]+)/)) {
         const albumName =
           request.url.split("/")[request.url.split("/").length - 1];
-        console.log("DUPA");
-        response.writeHead(200, { "Content-Type": "application/json" });
+
         response.end(
           JSON.stringify({ photos: getPhotosByAlbum(albumName) }, null, 5)
         );
@@ -90,12 +86,12 @@ const router = async (request, response) => {
       } else if (request.url == "/api/photos/tags") {
         const data = await getRequestData(request);
         const photo = addTag(JSON.parse(data));
-        console.log(photo);
+
         response.end(JSON.stringify({ result: photo }));
       } else if (request.url == "/api/photos/tags/mass") {
         const data = await getRequestData(request);
         const photo = addMassTags(JSON.parse(data));
-        console.log(photo);
+
         response.end(JSON.stringify({ result: photo }));
       }
       break;

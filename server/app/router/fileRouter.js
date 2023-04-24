@@ -4,8 +4,8 @@ const fs = require("fs");
 const router = async (request, response) => {
   switch (request.method) {
     case "GET":
+      response.writeHead(200, { "Content-Type": "image/jpg" });
       if (request.url.match(/\/api\/getfile\/([0-9]+)\/([a-z]+)/)) {
-        console.log(request.url.split("/")[request.url.split("/").length - 2]);
         const photoID =
           request.url.split("/")[request.url.split("/").length - 2];
         const actionName =
@@ -13,7 +13,6 @@ const router = async (request, response) => {
         const changedPhoto = findChangedPhoto(actionName, photoID);
         if (changedPhoto) {
           const img = fs.readFileSync(changedPhoto.url);
-          response.writeHead(200, { "Content-Type": "image/jpg" });
           response.write(img);
           response.end();
         }
@@ -23,7 +22,6 @@ const router = async (request, response) => {
         const photo = getPhoto(photoID);
         if (photo) {
           const img = fs.readFileSync(photo.url);
-          response.writeHead(200, { "Content-Type": "image/jpg" });
           response.write(img);
           response.end();
         }

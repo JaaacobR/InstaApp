@@ -10,7 +10,6 @@ module.exports = {
     return JSON.stringify(photosArray);
   },
   getPhoto: (id) => {
-    console.log(id, photosArray);
     return photosArray.find((item) => {
       return item.id == id;
     });
@@ -26,12 +25,11 @@ module.exports = {
     return url;
   },
   patchPhoto: (data) => {
-    console.log(data.id);
     if (!data.id) return null;
     const photo = photosArray.find((item) => {
       return item.id == parseInt(data.id);
     });
-    console.log(photo);
+
     if (!photo) return null;
     photo.update(data.content);
     return photo.getId();
@@ -58,7 +56,6 @@ module.exports = {
   },
   findChangedPhoto: (status, id) => {
     const photo = photosArray.find((photo) => photo.id == id);
-    console.log(photo, status);
     if (photo) {
       return photo.history.find((item) => item.status == status);
     }
