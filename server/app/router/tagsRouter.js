@@ -1,4 +1,4 @@
-const tagsController = require("./tagsController");
+const tagsController = require("../controller/tagsController");
 const getRequestData = require("../util/getRequestData");
 const tagsRouter = async (request, response) => {
   switch (request.method) {

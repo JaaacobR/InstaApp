@@ -1,7 +1,7 @@
 const getRequestData = require("../util/getRequestData");
-const { patchPhoto } = require("./jsonController");
-const { getMetaData, editPhoto } = require("./filtersController");
-const { getPhoto } = require("./jsonController");
+const { patchPhoto } = require("../controller/jsonController");
+const { getMetaData, editPhoto } = require("../controller/filtersController");
+const { getPhoto } = require("../controller/jsonController");
 
 const router = async (request, response) => {
   switch (request.method) {

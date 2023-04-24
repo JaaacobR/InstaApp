@@ -1,4 +1,4 @@
-const getRequestData = require("../getRequestData");
+const getRequestData = require("../util/getRequestData");
 const { saveFile, deleteFile } = require("../controller/fileController");
 const {
   addPhoto,

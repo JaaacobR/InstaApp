@@ -1,8 +1,8 @@
 const http = require("http");
-const imageRouter = require("./app/imageRouter");
-const tagsRouter = require("./app/tagsRouter");
-const filtersRouter = require("./app/filtersRouter");
-const fileRouter = require("./app/fileRouter");
+const imageRouter = require("./app/router/imageRouter");
+const tagsRouter = require("./app/router/tagsRouter");
+const filtersRouter = require("./app/router/filtersRouter");
+const fileRouter = require("./app/router/fileRouter");
 
 http
   .createServer(async (req, res) => {
