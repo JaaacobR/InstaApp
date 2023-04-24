@@ -1,8 +1,7 @@
-const { findChangedPhoto, getPhoto } = require("./jsonController");
+const { findChangedPhoto, getPhoto } = require("../controller/jsonController");
 const fs = require("fs");
 
 const router = async (request, response) => {
-  console.log("BBB");
   switch (request.method) {
     case "GET":
       if (request.url.match(/\/api\/getfile\/([0-9]+)\/([a-z]+)/)) {

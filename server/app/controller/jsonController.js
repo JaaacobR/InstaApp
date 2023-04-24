@@ -1,4 +1,4 @@
-const { Photo, photosArray } = require("./model");
+const { Photo, photosArray } = require("../model/model");
 
 module.exports = {
   addPhoto: (photoData) => {

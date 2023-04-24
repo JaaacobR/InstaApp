@@ -1,5 +1,5 @@
-const getRequestData = require("./getRequestData");
-const { saveFile, deleteFile } = require("./fileController");
+const getRequestData = require("../getRequestData");
+const { saveFile, deleteFile } = require("../controller/fileController");
 const {
   addPhoto,
   getPhotos,
@@ -10,7 +10,7 @@ const {
   addMassTags,
   findChangedPhoto,
   getPhotosByAlbum,
-} = require("./jsonController");
+} = require("../controller/jsonController");
 const fs = require("fs");
 
 const router = async (request, response) => {

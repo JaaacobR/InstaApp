@@ -1,5 +1,5 @@
-const { famousTags } = require("./model");
-const getRequestData = require("./getRequestData");
+const { famousTags } = require("../model/model");
+const getRequestData = require("../util/getRequestData");
 
 module.exports = {
   getRaw: () => {
@@ -20,11 +20,8 @@ module.exports = {
   addTag: (tag) => {
     const tagName = tag.name;
     console.log(tag, famousTags);
-   
 
-    if (
-      famousTags.find((famousTag) => tagName === famousTag) == undefined
-    ) {
+    if (famousTags.find((famousTag) => tagName === famousTag) == undefined) {
       famousTags.push(tagName);
       return { ...tag, index: famousTags.length };
     } else {

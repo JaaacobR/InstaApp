@@ -1,4 +1,4 @@
-const getRequestData = require("./getRequestData");
+const getRequestData = require("../util/getRequestData");
 const { patchPhoto } = require("./jsonController");
 const { getMetaData, editPhoto } = require("./filtersController");
 const { getPhoto } = require("./jsonController");
