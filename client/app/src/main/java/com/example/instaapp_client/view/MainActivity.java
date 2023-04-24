@@ -1,8 +1,10 @@
-package com.example.instaapp_client;
+package com.example.instaapp_client.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.instaapp_client.R;
 
 public class MainActivity extends AppCompatActivity {
 
