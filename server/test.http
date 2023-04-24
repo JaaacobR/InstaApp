@@ -20,11 +20,11 @@ GET http://localhost:3000/api/photos HTTP/1.1
 
 #########
 
-GET http://localhost:3000/api/photos/1682071171155 HTTP/1.1
+GET http://localhost:3000/api/photos/1682322052452 HTTP/1.1
 
 #########
 
-DELETE http://localhost:3000/api/photos/1681200839758 HTTP/1.1
+DELETE http://localhost:3000/api/photos/1682322084447 HTTP/1.1
 
 ##########
 
