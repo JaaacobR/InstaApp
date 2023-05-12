@@ -1,6 +1,7 @@
 package com.example.instaapp_client.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +14,30 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
+    public void replaceFragment(Fragment fragment) {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout, fragment)
+                .commit();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            switch(item.getItemId()){
+                case R.id.Home:
+                    replaceFragment(new Home());
+                    break;
+                case R.id.search:
+                    break;
+            }
+            return true;
+        });
     }
 }
