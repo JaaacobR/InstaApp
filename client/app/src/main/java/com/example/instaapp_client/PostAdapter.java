@@ -22,7 +22,11 @@ public class PostAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        if(postViewModel.getObservedPosts().getValue() == null){
+            return 0;
+        }else{
+            return postViewModel.getObservedPosts().getValue().size();
+        }
     }
 
     @Override
@@ -40,7 +44,6 @@ public class PostAdapter extends BaseAdapter {
         View root = convertView;
 
         ListItemBinding binding;
-        Log.d("adapter123", "123");
 
         if(root == null){
             if(layoutInflater == null){

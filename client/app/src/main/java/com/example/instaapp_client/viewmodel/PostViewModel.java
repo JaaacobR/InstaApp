@@ -30,7 +30,6 @@ public class PostViewModel extends ViewModel {
         call.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                Log.d("data123" , response.body().get(1).toString());
                 mutablePostsList.setValue(response.body());
             }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,8 @@ public class Home extends Fragment {
         adapter = new PostAdapter(postViewModel);
 
         postViewModel.getObservedPosts().observe(this, l -> {
+            Log.d("adapter123" , "1234567890" + l.toString());
+            adapter = new PostAdapter(postViewModel);
             binding.gridView.setAdapter(adapter);
         });
 
