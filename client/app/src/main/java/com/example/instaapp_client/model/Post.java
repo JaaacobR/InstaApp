@@ -5,7 +5,7 @@ import java.util.List;
 public class Post {
     private Long id;
 
-    private String Album;
+    private String album;
 
     private String originalName;
 
@@ -22,7 +22,7 @@ public class Post {
     public String toString() {
         return "Post{" +
                 "id=" + id +
-                ", Album='" + Album + '\'' +
+                ", Album='" + album + '\'' +
                 ", originalName='" + originalName + '\'' +
                 ", url='" + url + '\'' +
                 ", lastChange='" + lastChange + '\'' +
