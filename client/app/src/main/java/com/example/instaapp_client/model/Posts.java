@@ -7,4 +7,10 @@ public class Posts {
 
     private int total_results;
 
+    public List<Post> getResults() {
+        return results;
+    }
+
+
+
 }

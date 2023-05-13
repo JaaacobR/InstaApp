@@ -3,7 +3,7 @@ package com.example.instaapp_client.model;
 import java.util.List;
 
 public class Post {
-    private int id;
+    private Long id;
 
     private String Album;
 
@@ -18,6 +18,16 @@ public class Post {
     private List<History> history;
 
 
-
-
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", Album='" + Album + '\'' +
+                ", originalName='" + originalName + '\'' +
+                ", url='" + url + '\'' +
+                ", lastChange='" + lastChange + '\'' +
+                ", tags=" + tags +
+                ", history=" + history +
+                '}';
+    }
 }
