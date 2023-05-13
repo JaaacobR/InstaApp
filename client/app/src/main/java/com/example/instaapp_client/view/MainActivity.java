@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        replaceFragment(new Home());
+
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             switch(item.getItemId()){
                 case R.id.Home:
