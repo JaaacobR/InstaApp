@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.bumptech.glide.Glide;
 import com.example.instaapp_client.databinding.ListItemBinding;
+import com.example.instaapp_client.view.Home;
 import com.example.instaapp_client.viewmodel.PostViewModel;
 
 public class PostAdapter extends BaseAdapter {
@@ -16,6 +18,11 @@ public class PostAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
 
     public PostAdapter(PostViewModel postViewModel){
+        if(postViewModel.getObservedPosts().getValue() == null){
+            Log.d("adapter123" , "null");
+        }else{
+            Log.d("adapter123" , postViewModel.getObservedPosts().getValue().toString());
+        }
         this.postViewModel = postViewModel;
     }
 
@@ -57,6 +64,8 @@ public class PostAdapter extends BaseAdapter {
         }
 
         binding.setPost(postViewModel.getObservedPosts().getValue().get(i));
+        Log.d("image1234", "http://192.168.100.68:3000/api/getfile/" + postViewModel.getObservedPosts().getValue().get(i).getId());
+        Glide.with(binding.imageView.getContext()).load("http://192.168.100.38:3000/api/getfile/" + postViewModel.getObservedPosts().getValue().get(i).getId()).into(binding.imageView);
         return root;
     }
 }

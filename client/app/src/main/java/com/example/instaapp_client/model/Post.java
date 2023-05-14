@@ -17,6 +17,13 @@ public class Post {
 
     private List<History> history;
 
+    public String getUrl() {
+        return url;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     @Override
     public String toString() {
