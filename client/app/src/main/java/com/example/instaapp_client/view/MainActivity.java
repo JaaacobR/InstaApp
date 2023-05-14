@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new Home());
                     break;
                 case R.id.search:
+                    replaceFragment(new Search());
                     break;
             }
             return true;

@@ -13,7 +13,7 @@ import com.example.instaapp_client.R;
 
 public class Search extends Fragment {
 
-   
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
