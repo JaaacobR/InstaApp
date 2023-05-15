@@ -1,4 +1,9 @@
-const { encryptPass, decryptPass, createToken } = require("../util/security");
+const {
+  encryptPass,
+  decryptPass,
+  createToken,
+  verifyToken,
+} = require("../util/security");
 const { users } = require("../model/model");
 
 module.exports = {
@@ -9,6 +14,7 @@ module.exports = {
     console.log("ingkfmnlds");
     const hashedPassword = await encryptPass(password);
 
+    const token = await createToken({ email, name });
     const user = {
       id: new Date().getTime(),
       name,
@@ -16,10 +22,23 @@ module.exports = {
       email,
       password: hashedPassword,
       confirmed: false,
+      token,
     };
-    const token = await createToken({ email, name });
     users.push(user);
 
     return { token, user };
+  },
+  confirmUser: async (token) => {
+    const decrypted = await verifyToken(token);
+    if (decrypted) {
+      const user = users.find((user) => user.token === token);
+      if (!!user) {
+        user.confirmed = true;
+        return user;
+      } else {
+        return null;
+      }
+    }
+    return null;
   },
 };
