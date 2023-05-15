@@ -48,4 +48,6 @@ const famousTags = [
   "#style",
 ];
 
-module.exports = { Photo, photosArray, famousTags };
+const users = [];
+
+module.exports = { Photo, photosArray, famousTags, users };
