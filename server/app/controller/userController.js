@@ -11,7 +11,6 @@ module.exports = {
     console.log("info", name, lastName, email, password);
     if (name === "" || lastName === "" || email === "" || password === "")
       return null;
-    console.log("ingkfmnlds");
     const hashedPassword = await encryptPass(password);
 
     const token = await createToken({ email, name });
@@ -40,5 +39,12 @@ module.exports = {
       }
     }
     return null;
+  },
+  loginUser: async ({ name, password }) => {
+    const user = users.find((user) => user.name === name && user.confirmed);
+    if (!user) return null;
+    const isCorrectPassword = decryptPass(password, user.password);
+    if (!isCorrectPassword) return null;
+    return await createToken({ name });
   },
 };
