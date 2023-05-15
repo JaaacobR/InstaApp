@@ -1,4 +1,5 @@
 const http = require("http");
+require('dotenv').config();
 const imageRouter = require("./app/router/imageRouter");
 const tagsRouter = require("./app/router/tagsRouter");
 const filtersRouter = require("./app/router/filtersRouter");
@@ -16,4 +17,4 @@ http
       await fileRouter(req, res);
     }
   })
-  .listen(3000, () => console.log("listen on 3000"));
+  .listen(process.env.APP_PORT, () => console.log("listen on 3000"));
