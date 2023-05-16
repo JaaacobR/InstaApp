@@ -1,6 +1,22 @@
 const tagsController = require("../controller/tagsController");
 const getRequestData = require("../util/getRequestData");
+const { verifyToken } = require("../util/security");
 const tagsRouter = async (request, response) => {
+  if (
+    request.headers.authorization &&
+    request.headers.authorization.startsWith("Bearer")
+  ) {
+    let token = request.headers.authorization.split(" ")[1];
+    const isTokenActive = await verifyToken(token);
+    console.log(isTokenActive);
+    if (!isTokenActive) {
+      response.writeHead(401, { "Content-type": "application/json" });
+      response.end(JSON.stringify({ message: "unAuthorized" }));
+    }
+  } else {
+    response.writeHead(401, { "Content-type": "application/json" });
+    response.end(JSON.stringify({ message: "unAuthorized" }));
+  }
   switch (request.method) {
     case "GET":
       response.writeHead(200, { "Content-type": "application/json" });
