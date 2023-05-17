@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide;
 public class Converters {
     @BindingAdapter("bind:photoUrl")
     public static void changeUrl(ImageView imageView, String imageUrl){
-        Log.d("image123" , imageUrl);
         Glide.with(imageView.getContext())
                 .load(imageUrl)
                 .into(imageView);
