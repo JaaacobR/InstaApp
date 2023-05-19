@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".view.LoginActivity">
    <RelativeLayout
+       android:layout_weight="1"
        android:layout_width="match_parent"
        android:layout_margin="25dp"
        android:layout_height="wrap_content">
@@ -18,6 +19,7 @@
            android:textSize="32dp"/>
    </RelativeLayout>
     <LinearLayout
+        android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -67,6 +69,33 @@
                 android:textAlignment="center"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="match_parent"
+                android:text="Zaloguj się"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nie masz hasła?"/>
+        <Button
+            android:layout_width="match_parent"
+            android:text="Rejestracja"
+            android:layout_height="wrap_content"/>
+
+
     </LinearLayout>
 
 
