@@ -92,6 +92,7 @@
             android:text="Nie masz hasła?"/>
         <Button
             android:layout_width="match_parent"
+            android:id="@+id/registerButton"
             android:text="Rejestracja"
             android:layout_height="wrap_content"/>
 
