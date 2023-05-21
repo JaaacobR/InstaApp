@@ -21,8 +21,8 @@ public class RegisterViewModel extends ViewModel {
         this.mutableUser = new MutableLiveData<>();
     }
 
-    public void registerUser() {
-        Call<User> call = RetrofitService.getUserInterface().registerUser("sadfa", "sadfasdf", "sadfsdf", "dsafas");
+    public void registerUser(String login, String email, String fullName, String password) {
+        Call<User> call = RetrofitService.getUserInterface().registerUser(login, email, fullName, password);
 
         call.enqueue(new Callback<User>() {
             @Override

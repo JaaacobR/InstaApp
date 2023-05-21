@@ -2,8 +2,9 @@
 <layout>
     <data>
         <variable
-            name=""
-            type="" />
+            name="registerViewModel"
+            type="com.example.instaapp_client.viewmodel.RegisterViewModel" />
+
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -48,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
-                android:id="@+id/fullName"
+                android:id="@+id/full_name"
                 />
         </LinearLayout>
         <LinearLayout
@@ -99,6 +100,7 @@
                 android:textAlignment="center"
                 android:id="@+id/email"
                 />
+
         </LinearLayout>
 
         <LinearLayout
@@ -132,6 +134,7 @@
             android:layout_height="wrap_content">
             <Button
                 android:layout_width="match_parent"
+                android:id="@+id/registerBtn"
                 android:text="Zarejestruj się"
                 android:layout_height="match_parent"/>
         </LinearLayout>
