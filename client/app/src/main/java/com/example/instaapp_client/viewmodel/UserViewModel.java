@@ -39,4 +39,8 @@ public class UserViewModel extends ViewModel {
             }
         });
     }
+
+    public MutableLiveData<User> getObservedUser(){
+        return mutableUser;
+    }
 }
