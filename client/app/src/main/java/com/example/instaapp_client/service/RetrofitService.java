@@ -1,6 +1,7 @@
 package com.example.instaapp_client.service;
 
 import com.example.instaapp_client.api.PostInterface;
+import com.example.instaapp_client.api.UserInterface;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -14,4 +15,7 @@ public class RetrofitService {
     public static PostInterface getPostInterface()
     {
         return retrofit.create(PostInterface.class);
-    }}
+    }
+
+    public static UserInterface getUserInterface() {return retrofit.create(UserInterface.class);}
+}
