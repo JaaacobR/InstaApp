@@ -5,22 +5,19 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.instaapp_client.model.Post;
 import com.example.instaapp_client.model.User;
 import com.example.instaapp_client.service.RetrofitService;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class UserViewModel extends ViewModel {
+public class RegisterViewModel extends ViewModel {
 
     private MutableLiveData<User> mutableUser;
 
-    public UserViewModel(){
+    public RegisterViewModel(){
         this.mutableUser = new MutableLiveData<>();
     }
 
