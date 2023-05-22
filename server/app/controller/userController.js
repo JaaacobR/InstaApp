@@ -8,7 +8,7 @@ const { users } = require("../model/model");
 
 module.exports = {
   registerUser: async ({ fullName, login, email, password }) => {
-    console.log("info", name, lastName, email, password);
+   
     if (fullName === "" || login === "" || email === "" || password === "")
       return null;
     const hashedPassword = await encryptPass(password);
@@ -40,8 +40,8 @@ module.exports = {
     }
     return null;
   },
-  loginUser: async ({ name, password }) => {
-    const user = users.find((user) => user.name === name && user.confirmed);
+  loginUser: async ({ login, password }) => {
+    const user = users.find((user) => user.login === login && user.confirmed);
     if (!user) return null;
     const isCorrectPassword = decryptPass(password, user.password);
     if (!isCorrectPassword) return null;
