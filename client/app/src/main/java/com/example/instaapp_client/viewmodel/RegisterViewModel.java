@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.instaapp_client.model.User;
+import com.example.instaapp_client.requests.RegisterRequest;
 import com.example.instaapp_client.service.RetrofitService;
 
 import retrofit2.Call;
@@ -22,7 +23,7 @@ public class RegisterViewModel extends ViewModel {
     }
 
     public void registerUser(String login, String email, String fullName, String password) {
-        Call<User> call = RetrofitService.getUserInterface().registerUser(login, email, fullName, password);
+        Call<User> call = RetrofitService.getUserInterface().registerUser(new RegisterRequest(login, fullName, email, password));
 
         call.enqueue(new Callback<User>() {
             @Override
