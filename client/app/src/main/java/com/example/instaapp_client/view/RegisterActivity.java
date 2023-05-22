@@ -33,5 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
             registerViewModel.registerUser(binding.login.getText().toString(), binding.email.getText().toString(), binding.fullName.getText().toString(),binding.password.getText().toString());
         });
 
+
+
     }
 }

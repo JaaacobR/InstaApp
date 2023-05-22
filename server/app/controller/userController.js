@@ -7,17 +7,17 @@ const {
 const { users } = require("../model/model");
 
 module.exports = {
-  registerUser: async ({ name, lastName, email, password }) => {
+  registerUser: async ({ fullName, login, email, password }) => {
     console.log("info", name, lastName, email, password);
-    if (name === "" || lastName === "" || email === "" || password === "")
+    if (fullName === "" || login === "" || email === "" || password === "")
       return null;
     const hashedPassword = await encryptPass(password);
 
-    const token = await createToken({ email, name });
+    const token = await createToken({ email, login });
     const user = {
       id: new Date().getTime(),
-      name,
-      lastName,
+      fullName,
+      login,
       email,
       password: hashedPassword,
       confirmed: false,
