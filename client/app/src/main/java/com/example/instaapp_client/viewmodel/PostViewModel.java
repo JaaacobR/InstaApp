@@ -6,9 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.instaapp_client.model.Post;
-import com.example.instaapp_client.model.Posts;
 import com.example.instaapp_client.service.RetrofitService;
-import com.example.instaapp_client.view.Home;
 
 import java.util.List;
 
