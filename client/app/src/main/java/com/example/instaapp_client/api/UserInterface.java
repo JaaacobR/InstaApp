@@ -1,6 +1,7 @@
 package com.example.instaapp_client.api;
 
 import com.example.instaapp_client.model.User;
+import com.example.instaapp_client.requests.LoginRequest;
 import com.example.instaapp_client.requests.RegisterRequest;
 import com.example.instaapp_client.responses.RegisterResponse;
 
@@ -14,4 +15,7 @@ public interface UserInterface {
 
     @POST("/api/user/register")
     Call<RegisterResponse> registerUser(@Body RegisterRequest requestBody);
+
+    @POST("/api/user/login")
+    Call<User> loginUser(@Body LoginRequest requestBody);
 }

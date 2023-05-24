@@ -5,6 +5,7 @@ public class User {
     private String fullName;
     private String email;
     private boolean confirmed;
+    private String token;
 
 
 }
