@@ -41,10 +41,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         userViewModel.getObservedUser().observe(LoginActivity.this, s -> {
-            if(userViewModel.getObservedUser().getValue().getToken() != null){
-                
+
+            if(userViewModel.getObservedUser().getValue() != null){
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+            }else{
+                binding.message.setText("Niepoprawne dane logowania");
             }
         });
     }
