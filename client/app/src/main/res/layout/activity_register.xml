@@ -131,12 +131,18 @@
         <LinearLayout
             android:layout_marginTop="25dp"
             android:layout_width="match_parent"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
             <Button
                 android:layout_width="match_parent"
                 android:id="@+id/registerBtn"
                 android:text="Zarejestruj się"
                 android:layout_height="match_parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:autoLink="web"
+                android:text="@{registerViewModel.observedUser.url}"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -3,9 +3,11 @@ const getRequestData = require("../util/getRequestData");
 const tagsRouter = async (request, response) => {
   switch (request.method) {
     case "GET":
+     
       if (
         request.url.search(/\/api\/user\/confirm\/(^[\w-]*\.[\w-]*\.[\w-]*$)/)
       ) {
+        
         const token = request.url.split("/")[request.url.split("/").length - 1];
         const user = await userController.confirmUser(token);
         response.writeHead(200, { "Content-Type": "application/json" });
