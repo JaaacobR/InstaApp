@@ -133,6 +133,6 @@ POST http://localhost:3000/api/user/register
 POST http://localhost:3000/api/user/login
 
 {
-  "name": "Jakub",
-  "password": "dskajgfaklsjhgf,jha34532"
+  "login": "Jakub",
+  "password": "dskajfdgfaklsjhgf,jha34532"
 }
