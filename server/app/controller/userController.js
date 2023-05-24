@@ -12,6 +12,7 @@ module.exports = {
     if (fullName === "" || login === "" || email === "" || password === "")
       return null;
     const hashedPassword = await encryptPass(password);
+    console.log(fullName, email, login, password);
 
     const token = await createToken({ email, login });
     const user = {

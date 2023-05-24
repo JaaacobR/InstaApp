@@ -20,4 +20,4 @@ http
       await usersRouter(req, res);
     }
   })
-  .listen(process.env.APP_PORT, () => console.log("listen on 3000"));
+  .listen(3000, () => console.log("listen on 3000"));

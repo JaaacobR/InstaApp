@@ -123,8 +123,8 @@ GET http://localhost:3000/api/getfile/1684003203513/tint
 POST http://localhost:3000/api/user/register
 
 {
-  "name": "Jakub",
-  "lastName": "Ryszka",
+  "login": "Jakub",
+  "fullName": "Ryszka",
   "email": "adskjhfgkjh@jkdsfkl.pl",
   "password": "dskajgfaklsjhgf,jha34532"
 }

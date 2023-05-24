@@ -10,7 +10,7 @@ const decryptPass = async (userPass, encrypted) => {
 };
 
 const createToken = async (data) => {
-  let token = await jwt.sign(data, process.env.VERY_SECRET_KEY, {
+  let token = await jwt.sign(data, "hjksdagfjhksdghjksdgfhjksdfgbjksd", {
     expiresIn: "2m",
   });
   return token;
@@ -18,7 +18,7 @@ const createToken = async (data) => {
 
 const verifyToken = async (token) => {
   try {
-    let decoded = await jwt.verify(token, process.env.VERY_SECRET_KEY);
+    let decoded = await jwt.verify(token, "hjksdagfjhksdghjksdgfhjksdfgbjksd");
     return decoded;
   } catch (ex) {
     console.log({ message: ex.message });
