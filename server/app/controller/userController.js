@@ -8,7 +8,6 @@ const { users } = require("../model/model");
 
 module.exports = {
   registerUser: async ({ fullName, login, email, password }) => {
-   
     if (fullName === "" || login === "" || email === "" || password === "")
       return null;
     const hashedPassword = await encryptPass(password);
@@ -46,6 +45,6 @@ module.exports = {
     if (!user) return null;
     const isCorrectPassword = decryptPass(password, user.password);
     if (!isCorrectPassword) return null;
-    return await createToken({ name });
+    return await createToken({ email: user.email, login });
   },
 };

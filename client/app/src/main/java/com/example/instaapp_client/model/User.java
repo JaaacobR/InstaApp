@@ -7,5 +7,7 @@ public class User {
     private boolean confirmed;
     private String token;
 
-
+    public String getToken() {
+        return token;
+    }
 }

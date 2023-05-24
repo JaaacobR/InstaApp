@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="UserViewModel"
+            type="com.example.instaapp_client.viewmodel.UserViewModel" />
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -42,6 +48,7 @@
 
            <EditText
                android:layout_width="match_parent"
+               android:id="@+id/login"
                android:layout_height="match_parent"
                />
        </LinearLayout>
@@ -66,6 +73,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/password"
                 android:textAlignment="center"
                 />
         </LinearLayout>
@@ -76,6 +84,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:text="Zaloguj się"
+                android:id="@+id/loginBtn"
                 android:layout_height="match_parent"/>
         </LinearLayout>
     </LinearLayout>
@@ -104,3 +113,4 @@
 
 
 </LinearLayout>
+</layout>

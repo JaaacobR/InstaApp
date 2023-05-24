@@ -30,6 +30,7 @@ public class UserViewModel extends ViewModel {
             public void onResponse(Call<User> call, Response<User> response) {
                 Log.d("token" , response.body().toString());
                 mutableUser.setValue(response.body());
+
             }
 
             @Override
