@@ -9,9 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.instaapp_client.R;
+import com.example.instaapp_client.databinding.FragmentProfileBinding;
 
 
 public class ProfileFragment extends Fragment {
+
+    FragmentProfileBinding binding;
 
 
     @Override
