@@ -3,5 +3,5 @@
 
     <item android:title="Home" android:icon="@drawable/ic_baseline_home_24" android:id="@+id/Home" />
     <item android:title="Search" android:icon="@drawable/ic_baseline_search_24" android:id="@+id/search" />
-    <item android:title="Settings" android:icon="@drawable/ic_baseline_home_24" android:id="@+id/setting" />
+    <item android:title="Profile" android:icon="@drawable/ic_baseline_home_24" android:id="@+id/profile" />
 </menu>
