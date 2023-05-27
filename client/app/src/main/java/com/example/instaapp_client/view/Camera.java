@@ -1,21 +1,28 @@
 package com.example.instaapp_client.view;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageCapture;
 import androidx.camera.core.ImageCaptureException;
 import androidx.camera.core.Preview;
+import androidx.camera.core.VideoCapture;
 import androidx.camera.lifecycle.ProcessCameraProvider;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +53,12 @@ public class Camera extends Fragment {
 
     private ImageCapture imageCapture;
 
+    private VideoCapture videoCapture;
+    ProcessCameraProvider cameraProvider;
+
+    private boolean isRecording = false;
+
+    @SuppressLint("RestrictedApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,9 +71,11 @@ public class Camera extends Fragment {
         }
 
         binding.takePhotoBtn.setOnClickListener(v -> {
+            String timestamp = String.valueOf(new Date().getTime());
             ContentValues contentValues = new ContentValues();
-            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, new Date().getTime());
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, timestamp);
             contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
+
 
             ImageCapture.OutputFileOptions outputFileOptions =
                     new ImageCapture.OutputFileOptions.Builder(
@@ -72,7 +87,11 @@ public class Camera extends Fragment {
                     new ImageCapture.OnImageSavedCallback() {
                         @Override
                         public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                            // photo saved!!!
+                            Intent intent = new Intent(getActivity(), UploadFile.class);
+                            intent.putExtra("uri", outputFileResults.getSavedUri().toString());
+                            intent.putExtra("type", "image");
+                            intent.putExtra("timestamp", timestamp);
+                            startActivity(intent);
                         }
 
                         @Override
@@ -81,6 +100,17 @@ public class Camera extends Fragment {
                         }
                     });
         });
+
+        binding.takeVideoBtn.setOnClickListener(v -> {
+            isRecording = !isRecording;
+            if (!isRecording) {
+                recordVideo();
+            } else {
+                videoCapture.stopRecording();
+
+            }
+        });
+
         return view;
     }
 
@@ -113,11 +143,44 @@ public class Camera extends Fragment {
 
     }
 
+    @SuppressLint({"MissingPermission", "RestrictedApi"})
+    private void recordVideo() {
+        String timestamp = String.valueOf(new Date().getTime());
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME,timestamp);
+        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4");
+
+        videoCapture.startRecording(
+                new VideoCapture.OutputFileOptions.Builder(
+                        Camera.this.getContext().getContentResolver(),
+                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                        contentValues
+                ).build(),
+                ContextCompat.getMainExecutor(Camera.this.getContext()),
+                new VideoCapture.OnVideoSavedCallback() {
+                    @Override
+                    public void onVideoSaved(@NonNull VideoCapture.OutputFileResults outputFileResults) {
+                        Intent intent = new Intent(getActivity(), UploadFile.class);
+                        intent.putExtra("uri", outputFileResults.getSavedUri().toString());
+                        intent.putExtra("type", "video");
+                        intent.putExtra("timestamp", timestamp);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onError(int videoCaptureError, @NonNull String message, @Nullable Throwable cause) {
+                        // error
+                    }
+                });
+
+
+    }
+
     public void cameraStart() {
         cameraProviderFuture = ProcessCameraProvider.getInstance((Camera.this.getContext()));
         cameraProviderFuture.addListener(() -> {
             try {
-                ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
+                cameraProvider = cameraProviderFuture.get();
                 bindPreview(cameraProvider);
             } catch (InterruptedException | ExecutionException e) {
                 // No errors need to be handled for this Future. This should never be reached.
@@ -125,6 +188,7 @@ public class Camera extends Fragment {
         }, ContextCompat.getMainExecutor(Camera.this.getContext()));
     }
 
+    @SuppressLint("RestrictedApi")
     private void bindPreview(@NonNull ProcessCameraProvider cameraProvider) {
         Preview preview = new Preview.Builder().build();
 
@@ -132,6 +196,9 @@ public class Camera extends Fragment {
                 new ImageCapture.Builder()
                         .setTargetRotation(binding.camera.getDisplay().getRotation())
                         .build();
+        videoCapture = new VideoCapture.Builder()
+                .setTargetRotation(binding.camera.getDisplay().getRotation())
+                .build();
 
         CameraSelector cameraSelector = new CameraSelector.Builder()
                 .requireLensFacing(CameraSelector.LENS_FACING_BACK)
@@ -139,7 +206,7 @@ public class Camera extends Fragment {
 
         preview.setSurfaceProvider(binding.camera.getSurfaceProvider());
 
-        cameraProvider.bindToLifecycle(this, cameraSelector, imageCapture, preview);
+        cameraProvider.bindToLifecycle(this, cameraSelector, imageCapture, videoCapture,  preview);
     }
 
 

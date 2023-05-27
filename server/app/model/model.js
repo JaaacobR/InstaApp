@@ -8,8 +8,9 @@ class Photo {
     this.tags = [];
     this.history = [
       {
+        timestamp: Date.now(),
         status: "original",
-        lastModifiedDate: this.id,
+        url: url,
       },
     ];
     photosArray.push(this);

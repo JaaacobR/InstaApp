@@ -9,13 +9,14 @@ module.exports = {
         return new Promise((resolve)=>{
             form.parse(request, async(err, fields, files) => {
                 if(err) return null
+                console.log(files);
                 const uploadFolder = path.join(__dirname,"../../uploads",fields.album);
                 if (!fs.existsSync(uploadFolder)){
                     fs.mkdirSync(uploadFolder, { recursive: true });
                 }
                 form.uploadDir = uploadFolder
                 const file = files.file
-                const new_path = path.join(uploadFolder, "upload_" + Date.now().toString() + ".jpg")
+                const new_path = path.join(uploadFolder, "upload_" + Date.now().toString() + "." + files.file.name.split(".")[1])
                 try {
                     fs.renameSync(file.path, new_path);
                     resolve({

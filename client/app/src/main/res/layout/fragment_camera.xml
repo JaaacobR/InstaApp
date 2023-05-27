@@ -10,11 +10,26 @@
         android:id="@+id/camera"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <Button
-        android:layout_width="wrap_content"
-        android:text="take a photo"
-        android:id="@+id/takePhotoBtn"
-        android:layout_gravity="bottom"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+        <Button
+            android:layout_width="wrap_content"
+            android:text="take a photo"
+            android:id="@+id/takePhotoBtn"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="3dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/takeVideoBtn"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:text="take a video"/>
+    </LinearLayout>
 
 </FrameLayout>

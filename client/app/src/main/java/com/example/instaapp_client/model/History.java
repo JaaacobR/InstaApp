@@ -6,11 +6,6 @@ public class History {
     private String url;
 
 
-    public History(int timestamp, String status){
-        this.timestamp = timestamp;
-        this.status = status;
-    }
-
     public History(int timestamp, String status, String url){
         this.timestamp = timestamp;
         this.url = url;
