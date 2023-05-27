@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.profile:
                     replaceFragment(new ProfileFragment());
+                case R.id.addItem:
+                    replaceFragment(new Camera());
             }
             return true;
         });

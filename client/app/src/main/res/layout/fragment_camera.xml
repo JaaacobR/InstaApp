@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Camera">
+
+    <androidx.camera.view.PreviewView
+        android:background="#000000"
+        android:id="@+id/camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <Button
+        android:layout_width="wrap_content"
+        android:text="take a photo"
+        android:id="@+id/takePhotoBtn"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"/>
+
+</FrameLayout>
