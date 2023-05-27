@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.instaapp_client.R;
 import com.example.instaapp_client.databinding.ActivityLoginBinding;
 import com.example.instaapp_client.databinding.ActivityMainBinding;
+import com.example.instaapp_client.store.Store;
 import com.example.instaapp_client.viewmodel.RegisterViewModel;
 import com.example.instaapp_client.viewmodel.UserViewModel;
 
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         userViewModel.getObservedUser().observe(LoginActivity.this, s -> {
 
             if(userViewModel.getObservedUser().getValue() != null){
-
+                Store.setToken(userViewModel.getObservedUser().getValue().getToken());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }else{
