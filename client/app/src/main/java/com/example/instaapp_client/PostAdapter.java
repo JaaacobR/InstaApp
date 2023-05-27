@@ -64,7 +64,7 @@ public class PostAdapter extends BaseAdapter {
         }
 
         binding.setPost(postViewModel.getObservedPosts().getValue().get(i));
-        Glide.with(binding.imageView.getContext()).load("http://172.20.10.2:3000/api/getfile/" + postViewModel.getObservedPosts().getValue().get(i).getId()).into(binding.imageView);
+        Glide.with(binding.imageView.getContext()).load("http://192.168.100.38:3000/api/getfile/" + postViewModel.getObservedPosts().getValue().get(i).getId()).into(binding.imageView);
         return root;
     }
 }
