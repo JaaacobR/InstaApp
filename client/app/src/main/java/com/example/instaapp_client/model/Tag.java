@@ -5,6 +5,12 @@ public class Tag {
     private String tag;
     private int popularity;
 
+    public Tag(int id, String tag, int popularity) {
+        this.id = id;
+        this.tag = tag;
+        this.popularity = popularity;
+    }
+
     public int getId() {
         return id;
     }

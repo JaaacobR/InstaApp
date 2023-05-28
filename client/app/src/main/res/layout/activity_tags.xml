@@ -8,7 +8,7 @@
     tools:context=".view.TagsActivity">
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/choiceGroup"
-        app:singleSelection="true"
+        app:singleSelection="false"
         android:layout_width="match_parent"
         android:layout_weight="7"
         android:layout_height="wrap_content">
@@ -17,6 +17,7 @@
     <Button
         android:layout_width="match_parent"
         android:text="Add Tags"
+        android:id="@+id/addTagBtn"
         android:layout_height="wrap_content"/>
 
 

@@ -76,7 +76,7 @@ PATCH http://localhost:3000/api/photos/tags
 PATCH http://localhost:3000/api/photos/tags/mass
 
 {
-  "id": 1682077503471,
+  "id": 1685275836872,
   "tags":[{
     "name": "newTag123126",
   "popularity": 10000

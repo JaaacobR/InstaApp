@@ -101,7 +101,9 @@ public class UploadFile extends AppCompatActivity {
                     btnTags.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
                     binding.linearButtons.addView(btnTags);
                     btnTags.setOnClickListener( v -> {
+                        Log.d("infp123", String.valueOf(response.body().getId()));
                         Intent intent = new Intent(UploadFile.this, TagsActivity.class);
+                        intent.putExtra("id", String.valueOf(response.body().getId()));
                         startActivity(intent);
                     });
 

@@ -50,8 +50,7 @@ module.exports = {
       return item.id == parseInt(data.id);
     });
     if (!photo) return null;
-    photo.tags = [...photo.tags, ...data.tags];
-    photo.update();
+    photo.tags = [...data.tags]
     return photo;
   },
   findChangedPhoto: (status, id) => {
