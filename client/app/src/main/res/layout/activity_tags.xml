@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".view.TagsActivity">
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/choiceGroup"
+        app:singleSelection="true"
+        android:layout_width="match_parent"
+        android:layout_weight="7"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.chip.ChipGroup>
+    <Button
+        android:layout_width="match_parent"
+        android:text="Add Tags"
+        android:layout_height="wrap_content"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

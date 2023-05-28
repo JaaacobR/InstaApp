@@ -11,7 +11,7 @@ const tagsRouter = async (request, response) => {
         response.end(JSON.stringify({ tagsList }, null, 5));
       } else if (request.url == "/api/tags") {
         const tagsList = tagsController.getTags();
-        response.end(JSON.stringify({ tagsList }, null, 5));
+        response.end(JSON.stringify([ ...tagsList ], null, 5));
       } else if (request.url.match(/\/api\/tags\/([0-9]+)/)) {
         const id = request.url.split("/")[3];
         const tag = tagsController.getTag(id);

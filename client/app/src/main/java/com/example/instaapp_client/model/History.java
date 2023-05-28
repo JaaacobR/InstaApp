@@ -1,7 +1,7 @@
 package com.example.instaapp_client.model;
 
 public class History {
-    private int timestamp;
+    private long timestamp;
     private String status;
     private String url;
 
@@ -12,7 +12,7 @@ public class History {
         this.status = status;
     }
 
-    public int getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
