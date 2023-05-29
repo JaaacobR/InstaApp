@@ -32,6 +32,10 @@ const profileRouter = async (request, response) => {
     case "DELETE":
 
     case "PATCH":
+      if(request.url === "/api/profile"){
+        let data = getRequestData(request)
+        
+      }
   }
 };
 

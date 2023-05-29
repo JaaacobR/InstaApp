@@ -38,10 +38,13 @@ import retrofit2.Response;
 public class UploadFile extends AppCompatActivity {
 
     ActivityUploadFileBinding binding;
+    List<String> tagsList = new ArrayList<String>();
 
     @Override
     protected void onResume() {
         super.onResume();
+      
+
     }
 
     @Override
@@ -99,6 +102,7 @@ public class UploadFile extends AppCompatActivity {
                     binding.linearButtons.addView(btnTags);
                     btnTags.setOnClickListener(v -> {
                         List<String> tagsList = new ArrayList<String>();
+                        tagsList.clear();
                         for (int i = 0; i < response.body().getTags().size(); i++) {
                             tagsList.add(response.body().getTags().get(i).getTag());
                         }

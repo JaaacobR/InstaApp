@@ -65,6 +65,7 @@ public class TagsActivity extends AppCompatActivity {
                     chip.setCheckable(true);
 
                     chip.setText(response.body().get(i).getTag());
+                    Log.d("taglist", tagsList.toString());
 
                     if(tagsList.contains(response.body().get(i).getTag())){
                         chip.setChecked(true);

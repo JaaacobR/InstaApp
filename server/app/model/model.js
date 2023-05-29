@@ -49,6 +49,27 @@ const famousTags = [
   "#style",
 ];
 
+class User {
+  constructor(data) {
+    this.login = data.login;
+    this.email = data.email;
+    this.token = data.token;
+    this.fullName = data.fullName;
+    this.password = data.password;
+    this.profile = null;
+    this.confirmed = false;
+  }
+
+  confirm() {
+    this.confirmed = true;
+  }
+
+  update(login, fullName) {
+    this.fullName = fullName;
+    this.login = login;
+  }
+}
+
 const users = [];
 
-module.exports = { Photo, photosArray, famousTags, users };
+module.exports = { Photo, photosArray, famousTags, users, User };

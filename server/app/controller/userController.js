@@ -15,13 +15,13 @@ module.exports = {
 
     const token = await createToken({ email, login });
     const user = {
-      id: new Date().getTime(),
       fullName,
       login,
       email,
       password: hashedPassword,
       confirmed: false,
       token,
+      profile: null
     };
     users.push(user);
 
