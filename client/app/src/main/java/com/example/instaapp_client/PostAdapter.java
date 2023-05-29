@@ -1,6 +1,8 @@
 package com.example.instaapp_client;
 
+
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +11,6 @@ import android.widget.BaseAdapter;
 
 import com.bumptech.glide.Glide;
 import com.example.instaapp_client.databinding.ListItemBinding;
-import com.example.instaapp_client.view.Home;
 import com.example.instaapp_client.viewmodel.PostViewModel;
 
 public class PostAdapter extends BaseAdapter {
@@ -18,6 +19,7 @@ public class PostAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
 
     public PostAdapter(PostViewModel postViewModel){
+
         if(postViewModel.getObservedPosts().getValue() == null){
             Log.d("adapter123" , "null");
         }else{
@@ -63,8 +65,13 @@ public class PostAdapter extends BaseAdapter {
             binding = (ListItemBinding) root.getTag();
         }
 
+        binding.post.setOnClickListener( v -> {
+            //Intent intent = new Intent(getActivity(), UploadFile.class);
+            
+        });
+
         binding.setPost(postViewModel.getObservedPosts().getValue().get(i));
-        Glide.with(binding.imageView.getContext()).load("http://192.168.100.38:3000/api/getfile/" + postViewModel.getObservedPosts().getValue().get(i).getId()).into(binding.imageView);
+        Glide.with(binding.imageView.getContext()).load("http://192.168.119.67:3000/api/getfile/" + postViewModel.getObservedPosts().getValue().get(i).getId()).into(binding.imageView);
         return root;
     }
 }

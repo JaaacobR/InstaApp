@@ -36,6 +36,7 @@ public class Home extends Fragment {
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
+
         postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
 
         postViewModel.getPosts();
@@ -43,6 +44,7 @@ public class Home extends Fragment {
         binding.setPostViewModel(postViewModel);
 
         adapter = new PostAdapter(postViewModel);
+
 
         postViewModel.getObservedPosts().observe(this, l -> {
             adapter = new PostAdapter(postViewModel);

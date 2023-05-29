@@ -39,6 +39,10 @@ public class UploadFile extends AppCompatActivity {
 
     ActivityUploadFileBinding binding;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,31 +56,23 @@ public class UploadFile extends AppCompatActivity {
         String type = bundle.getString("type");
         String timestamp = bundle.getString("timestamp");
 
-        if(type.equals("image")){
+        if (type.equals("image")) {
             ImageView imageView = new ImageView(this);
             imageView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             binding.linearLayout.addView(imageView);
 
             Glide.with(imageView.getContext()).load(uri).into(imageView);
-        }else{
+        } else {
             VideoView videoView = new VideoView(this);
             videoView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             binding.linearLayout.addView(videoView);
 
-           videoView.setVideoURI(Uri.parse(uri));
+            videoView.setVideoURI(Uri.parse(uri));
             MediaController mediaController = new MediaController(this);
 
-            // sets the anchor view
-            // anchor view for the videoView
             mediaController.setAnchorView(videoView);
-
-            // sets the media player to the videoView
             mediaController.setMediaPlayer(videoView);
-
-            // sets the media controller to the videoView
             videoView.setMediaController(mediaController);
-
-            // starts the video
             videoView.start();
         }
 
@@ -87,7 +83,6 @@ public class UploadFile extends AppCompatActivity {
 
         binding.uploadBtn.setOnClickListener(v -> {
             File file = new File(type.equals("video") ? Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES) + "/" + timestamp + ".mp4" : Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + timestamp + ".jpg");
-            Log.d("fail" , uri);
             RequestBody fileRequest = RequestBody.create(MediaType.parse("multipart/form-data"), file);
             MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), fileRequest);
             RequestBody album = RequestBody.create(MultipartBody.FORM, "samochody");
@@ -102,9 +97,9 @@ public class UploadFile extends AppCompatActivity {
                     btnTags.setText("Tags");
                     btnTags.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
                     binding.linearButtons.addView(btnTags);
-                    btnTags.setOnClickListener( v -> {
+                    btnTags.setOnClickListener(v -> {
                         List<String> tagsList = new ArrayList<String>();
-                        for(int i=0; i < response.body().getTags().size(); i++){
+                        for (int i = 0; i < response.body().getTags().size(); i++) {
                             tagsList.add(response.body().getTags().get(i).getTag());
                         }
                         Intent intent = new Intent(UploadFile.this, TagsActivity.class);
@@ -113,27 +108,19 @@ public class UploadFile extends AppCompatActivity {
                         startActivity(intent);
                     });
 
-                   if(type.equals("image")){
-                       Button btnFilters = new Button(UploadFile.this);
-                       btnFilters.setText("Filters");
-                       btnFilters.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-                       binding.linearButtons.addView(btnFilters);
-                   }
-
+                    if (type.equals("image")) {
+                        Button btnFilters = new Button(UploadFile.this);
+                        btnFilters.setText("Filters");
+                        btnFilters.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+                        binding.linearButtons.addView(btnFilters);
+                    }
                 }
-
                 @Override
                 public void onFailure(Call<Post> call, Throwable t) {
-                    Log.d("fail1234", t.getMessage());
                     finish();
 
                 }
             });
         });
-
-
-
-
-
     }
 }

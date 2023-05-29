@@ -19,6 +19,7 @@ const createToken = async (data) => {
 const verifyToken = async (token) => {
   try {
     let decoded = await jwt.verify(token, "hjksdagfjhksdghjksdgfhjksdfgbjksd");
+    console.log(typeof decoded, "decoded data");
     return decoded;
   } catch (ex) {
     console.log({ message: ex.message });
