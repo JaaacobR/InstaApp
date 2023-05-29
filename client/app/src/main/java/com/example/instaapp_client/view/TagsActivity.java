@@ -37,6 +37,7 @@ public class TagsActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         String id = bundle.getString("id");
+        ArrayList<String> tagsList = bundle.getStringArrayList("tagList");
 
         binding.choiceGroup.setOnCheckedStateChangeListener((group, checkedIds) -> {
 
@@ -64,6 +65,10 @@ public class TagsActivity extends AppCompatActivity {
                     chip.setCheckable(true);
 
                     chip.setText(response.body().get(i).getTag());
+
+                    if(tagsList.contains(response.body().get(i).getTag())){
+                        chip.setChecked(true);
+                    }
 
                     binding.choiceGroup.addView(chip);
                 }

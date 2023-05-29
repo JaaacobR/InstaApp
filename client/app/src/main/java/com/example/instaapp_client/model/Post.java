@@ -13,7 +13,7 @@ public class Post {
 
     private String lastChange;
 
-    private List<String> tags;
+    private List<Tag> tags;
 
     private List<History> history;
 
@@ -23,6 +23,14 @@ public class Post {
 
     public Long getId() {
         return id;
+    }
+
+    public List<History> getHistory() {
+        return history;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
     }
 
     @Override

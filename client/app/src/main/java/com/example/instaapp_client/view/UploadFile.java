@@ -25,6 +25,8 @@ import com.example.instaapp_client.service.RetrofitService;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -101,9 +103,13 @@ public class UploadFile extends AppCompatActivity {
                     btnTags.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
                     binding.linearButtons.addView(btnTags);
                     btnTags.setOnClickListener( v -> {
-                        Log.d("infp123", String.valueOf(response.body().getId()));
+                        List<String> tagsList = new ArrayList<String>();
+                        for(int i=0; i < response.body().getTags().size(); i++){
+                            tagsList.add(response.body().getTags().get(i).getTag());
+                        }
                         Intent intent = new Intent(UploadFile.this, TagsActivity.class);
                         intent.putExtra("id", String.valueOf(response.body().getId()));
+                        intent.putExtra("tagList", (ArrayList<String>) tagsList);
                         startActivity(intent);
                     });
 
