@@ -1,6 +1,8 @@
 package com.example.instaapp_client.model;
 
-public class History {
+import java.io.Serializable;
+
+public class History implements Serializable {
     private long timestamp;
     private String status;
     private String url;

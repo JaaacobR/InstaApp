@@ -11,13 +11,14 @@ const decryptPass = async (userPass, encrypted) => {
 
 const createToken = async (data) => {
   let token = await jwt.sign(data, "hjksdagfjhksdghjksdgfhjksdfgbjksd", {
-    expiresIn: "2m",
+    expiresIn: "15m",
   });
   return token;
 };
 
 const verifyToken = async (token) => {
   try {
+    console.log(token)
     let decoded = await jwt.verify(token, "hjksdagfjhksdghjksdgfhjksdfgbjksd");
     console.log(typeof decoded, "decoded data");
     return decoded;

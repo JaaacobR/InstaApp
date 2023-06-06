@@ -10,6 +10,7 @@ const {
   addMassTags,
   findChangedPhoto,
   getPhotosByAlbum,
+  addLocation,
 } = require("../controller/jsonController");
 const fs = require("fs");
 
@@ -93,6 +94,17 @@ const router = async (request, response) => {
         const photo = addMassTags(JSON.parse(data));
 
         response.end(JSON.stringify({ result: photo }));
+      } else if (request.url === "/api/photos/location") {
+        const data = await getRequestData(request);
+        console.log(data);
+        const photo = addLocation(JSON.parse(data));
+        if (photo) {
+          response.writeHead(201, { "Content-Type": "application/json" });
+          response.write(JSON.stringify(photo));
+        } else {
+          response.writeHead(404, { "Content-Type": "application/json" });
+          response.write(JSON.stringify(photo));
+        }
       }
       break;
   }

@@ -43,11 +43,11 @@ public class Home extends Fragment {
 
         binding.setPostViewModel(postViewModel);
 
-        adapter = new PostAdapter(postViewModel);
+        adapter = new PostAdapter(postViewModel, getContext());
 
 
         postViewModel.getObservedPosts().observe(this, l -> {
-            adapter = new PostAdapter(postViewModel);
+            adapter = new PostAdapter(postViewModel, getContext());
             binding.gridView.setAdapter(adapter);
         });
 

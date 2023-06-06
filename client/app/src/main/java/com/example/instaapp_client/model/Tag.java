@@ -1,6 +1,8 @@
 package com.example.instaapp_client.model;
 
-public class Tag {
+import java.io.Serializable;
+
+public class Tag implements Serializable {
     private int id;
     private String tag;
     private int popularity;

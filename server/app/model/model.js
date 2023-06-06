@@ -6,6 +6,7 @@ class Photo {
     this.url = url;
     this.lastChange = "original";
     this.tags = [];
+    this.location = null;
     this.history = [
       {
         timestamp: Date.now(),
@@ -58,6 +59,7 @@ class User {
     this.password = data.password;
     this.profile = null;
     this.confirmed = false;
+    
   }
 
   confirm() {

@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         binding.setRegisterViewModel(registerViewModel);
 
         binding.registerBtn.setOnClickListener(v -> {
-            registerViewModel.registerUser(binding.login.getText().toString(), binding.email.getText().toString(), binding.fullName.getText().toString(),binding.password.getText().toString());
+            registerViewModel.registerUser(binding.login.getEditText().getText().toString(), binding.email.getEditText().getText().toString(), binding.fullName.getEditText().getText().toString(),binding.password.getEditText().getText().toString());
         });
 
         registerViewModel.getObservedUser().observe(RegisterActivity.this, s -> {

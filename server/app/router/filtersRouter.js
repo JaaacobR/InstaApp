@@ -2,6 +2,7 @@ const getRequestData = require("../util/getRequestData");
 const { patchPhoto } = require("../controller/jsonController");
 const { getMetaData, editPhoto } = require("../controller/filtersController");
 const { getPhoto } = require("../controller/jsonController");
+const {photosArray} = require("../model/model")
 
 const router = async (request, response) => {
   response.writeHead(200, { "Content-Type": "application/json" });
@@ -22,6 +23,7 @@ const router = async (request, response) => {
       break;
     case "PATCH":
       if (request.url === "/api/filters") {
+      
         const data = await getRequestData(request);
         const dataImage = JSON.parse(data);
         patchPhoto({
@@ -35,7 +37,15 @@ const router = async (request, response) => {
               ".jpg",
           },
         });
+        
         await editPhoto(dataImage.url, dataImage.type, dataImage.params);
+        const photo = photosArray.find(photo => photo.url === dataImage.url)
+        if(photo){
+          response.writeHead(201, { "Content-Type": "application/json" });
+          response.write(JSON.stringify(photo))
+        }else{
+
+        }
       }
       break;
   }

@@ -43,10 +43,11 @@ module.exports = {
   loginUser: async ({ login, password }) => {
     const user = users.find((user) => user.login === login && user.confirmed);
     if (!user) return null;
-    console.log(user.password);
+    
     const isCorrectPassword = await decryptPass(password, user.password);
-    console.log(isCorrectPassword);
+
     if (!isCorrectPassword) return null;
-    return await createToken({ email: user.email, login });
+    const token = await createToken({ email: user.email, login });
+    return {token, login: user.login}
   },
 };

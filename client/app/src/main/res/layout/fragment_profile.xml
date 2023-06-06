@@ -12,12 +12,18 @@
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:layout_weight="1"
            android:orientation="horizontal">
            <RelativeLayout
-               android:layout_weight="2"
+               android:layout_weight="4"
                android:layout_width="wrap_content"
                android:layout_height="match_parent">
 
+                <ImageView
+                    android:layout_width="100dp"
+                    android:id="@+id/imageView"
+                    android:layout_centerInParent="true"
+                    android:layout_height="100dp"/>
            </RelativeLayout>
            <LinearLayout
                android:layout_width="wrap_content"
@@ -27,26 +33,54 @@
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="login"/>
+                   android:id="@+id/login"
+                   android:text=""/>
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="login"/>
+                   android:id="@+id/email"
+                   android:text=""/>
                <TextView
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:text="login"/>
-               <Button
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Edytuj"/>
+                   android:id="@+id/fullName"
+                   android:text=""/>
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_height="wrap_content">
+                  <Button
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/editBtn"
+                      android:text="Edit"/>
+                  <Button
+                      android:layout_width="wrap_content"
+                      android:layout_marginLeft="5dp"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/addBtn"
+                      android:text="Profile"/>
+                  <Button
+                      android:layout_width="wrap_content"
+                      android:layout_marginLeft="5dp"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/logout"
+                      android:text="LogOut"/>
+
+              </LinearLayout>
            </LinearLayout>
 
        </LinearLayout>
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:layout_weight="5">
+           android:layout_weight="15">
+           <GridView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:id="@+id/gridView"
+               tools:listitem="@layout/list_item"
+               android:numColumns="1"/>
 
        </LinearLayout>
    </LinearLayout>

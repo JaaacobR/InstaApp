@@ -10,6 +10,7 @@ import com.example.instaapp_client.requests.LoginRequest;
 import com.example.instaapp_client.requests.RegisterRequest;
 import com.example.instaapp_client.responses.RegisterResponse;
 import com.example.instaapp_client.service.RetrofitService;
+import com.example.instaapp_client.view.ProfileFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +36,7 @@ public class UserViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Log.d("fail", "fail" + call.toString() + " " + t.getMessage());
+                Log.d("fail", "failKurwa" + call.toString() + " " + t.getMessage());
             }
         });
     }

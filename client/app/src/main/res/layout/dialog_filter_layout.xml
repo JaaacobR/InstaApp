@@ -2,13 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_margin="20dp"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_weight="2">
-
-
+        <Button
+            android:layout_width="match_parent"
+            android:text="grayscale"
+            android:id="@+id/grayScaleBtn"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:text="flip"
+            android:id="@+id/flipBtn"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="match_parent"
+            android:text="negate"
+            android:id="@+id/negateBtn"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
     <LinearLayout
@@ -19,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:id="@+id/cancelBtn"
             android:text="Cancel"/>
     </LinearLayout>
 

@@ -38,13 +38,16 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.loginBtn.setOnClickListener(v -> {
-            userViewModel.loginUser(binding.login.getText().toString(), binding.password.getText().toString());
+            userViewModel.loginUser(binding.login.getEditText().getText().toString(), binding.password.getEditText().getText().toString());
         });
 
         userViewModel.getObservedUser().observe(LoginActivity.this, s -> {
 
             if(userViewModel.getObservedUser().getValue() != null){
                 Store.setToken(userViewModel.getObservedUser().getValue().getToken());
+                Log.d("freestyle", userViewModel.getObservedUser().getValue().toString());
+                Store.setLogin(userViewModel.getObservedUser().getValue().getLogin());
+                Log.d("token1234" , Store.getToken());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }else{

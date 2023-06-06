@@ -10,4 +10,8 @@ public class User {
     public String getToken() {
         return token;
     }
+
+    public String getLogin() {
+        return login;
+    }
 }

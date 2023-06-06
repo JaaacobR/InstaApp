@@ -20,6 +20,7 @@ http
     } else if (req.url.search("api/user") !== -1) {
       await usersRouter(req, res);
     } else if (req.url.search("/api/profile") !== -1) {
+      console.log("KURWAAJKSAJKHGHJK")
       await profileRouter(req, res);
     }
   })

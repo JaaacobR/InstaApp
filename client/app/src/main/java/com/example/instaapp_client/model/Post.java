@@ -1,8 +1,9 @@
 package com.example.instaapp_client.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Post {
+public class Post implements Serializable {
     private Long id;
 
     private String album;
@@ -13,7 +14,9 @@ public class Post {
 
     private String lastChange;
 
-    private List<Tag> tags;
+    private  List<Tag> tags;
+
+    private String location;
 
     private List<History> history;
 
@@ -31,6 +34,10 @@ public class Post {
 
     public List<Tag> getTags() {
         return tags;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     @Override

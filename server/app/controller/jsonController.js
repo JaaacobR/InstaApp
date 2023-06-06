@@ -53,6 +53,13 @@ module.exports = {
     photo.tags = [...data.tags]
     return photo;
   },
+  addLocation: (data) => {
+    if (!data.id) return null;
+    const photo = photosArray.find((item) => item.id == data.id)
+    if(!photo) return null;
+    photo.location = data.location;
+    return photo;
+  },
   findChangedPhoto: (status, id) => {
     const photo = photosArray.find((photo) => photo.id == id);
     if (photo) {

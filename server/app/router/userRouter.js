@@ -19,7 +19,7 @@ const tagsRouter = async (request, response) => {
         const data = await getRequestData(request);
         const jsonData = JSON.parse(data);
         const { token, user } = await userController.registerUser(jsonData);
-        console.log(user, token);
+      
         if (!!user && !!token) {
           response.writeHead(200, { "Content-Type": "application/json" });
           response.end(JSON.stringify({ url: token }));
@@ -30,7 +30,7 @@ const tagsRouter = async (request, response) => {
         const token = await userController.loginUser(jsonData);
         if (token) {
           response.writeHead(200, { "Content-Type": "application/json" });
-          response.end(JSON.stringify({ token }));
+          response.end(JSON.stringify( token ));
         } else {
           response.writeHead(401, { "Content-Type": "application/json" });
           response.end(

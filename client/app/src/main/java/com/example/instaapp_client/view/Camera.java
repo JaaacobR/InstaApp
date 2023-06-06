@@ -56,7 +56,7 @@ public class Camera extends Fragment {
     private VideoCapture videoCapture;
     ProcessCameraProvider cameraProvider;
 
-    private boolean isRecording = false;
+    private boolean isRecording = true;
 
     @SuppressLint("RestrictedApi")
     @Override

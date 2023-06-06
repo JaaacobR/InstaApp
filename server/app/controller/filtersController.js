@@ -1,4 +1,5 @@
 const sharp = require("sharp");
+const { photosArray } = require("../model/model");
 
 module.exports = {
   getMetaData: async (url) => {
@@ -15,7 +16,9 @@ module.exports = {
       }
     });
   },
-  editPhoto: async (url, type, params) => await getAction(url, type, params),
+  editPhoto: async (url, type, params) => {
+    await getAction(url, type, params);
+  },
 };
 
 const getAction = async (url, type, params) => {
@@ -36,7 +39,9 @@ const getAction = async (url, type, params) => {
           case "reformat":
             await sharp(url)
               .toFormat(params)
-              .toFile(url.slice(0, url.lastIndexOf(".")) + "-rotated" + "." + format);
+              .toFile(
+                url.slice(0, url.lastIndexOf(".")) + "-rotated" + "." + format
+              );
             break;
           case "crop":
             await sharp(url)
@@ -46,7 +51,7 @@ const getAction = async (url, type, params) => {
           case "grayscale":
             await sharp(url)
               .grayscale()
-              .toFile(url.slice(0, url.lastIndexOf(".")) + "-cropped" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-grayscale" + ".jpg");
             break;
           case "tint":
             await sharp(url)
@@ -61,17 +66,18 @@ const getAction = async (url, type, params) => {
           case "flip":
             await sharp(url)
               .flip()
-              .toFile(url.slice(0, url.lastIndexOf(".")) + "-flipped" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-flip" + ".jpg");
             break;
           case "flop":
             await sharp(url)
               .flop()
-              .toFile(url.slice(0, url.lastIndexOf(".")) + "-flopped" + ".jpg");
+              .toFile(url.slice(0, url.lastIndexOf(".")) + "-flop" + ".jpg");
             break;
         }
       } else {
         resolve("url_not_found");
       }
+      resolve("ready")
     } catch (error) {
       reject(error);
     }

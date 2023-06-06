@@ -4,30 +4,46 @@ const {
   createToken,
   verifyToken,
 } = require("../util/security");
-const { users, photos } = require("../model/model");
+const { users, photosArray } = require("../model/model");
+const path = require("path");
+const fs = require("fs");
+const formidable = require("formidable");
 
 module.exports = {
   getProfile: (profileData) => {
     if (!profileData.login) return null;
     const user = users.find((user) => user.login === profileData.login);
     if (!user) return null;
-    const photos = photos.filter((photo) => photo.alnum === user.login);
-    return { user, photos };
+    const photos = photosArray.filter((photo) => photo.album === user.login);
+    return {
+      login: user.login,
+      fullName: user.fullName,
+      email: user.email,
+      photos,
+      profile: user.profile,
+    };
   },
-  updateProfile: (data, profileData) => {
+  updateProfile: (profileData, data) => {
     if (!profileData.login) return null;
     const user = users.find((user) => user.login === profileData.login);
     if (!user) return null;
     user.fullName = data.fullName;
-    user.login = data.login;
-    return this.getProfile(profileData);
+    user.email = data.email;
+    const photos = photosArray.filter((photo) => photo.album === user.login);
+    return {
+      login: user.login,
+      fullName: user.fullName,
+      email: user.email,
+      photos,
+      profile: user.profile,
+    };
   },
   saveFile: async (request, response) => {
     const form = formidable.IncomingForm();
     return new Promise((resolve) => {
       form.parse(request, async (err, fields, files) => {
         if (err) return null;
-        console.log(files);
+
         const uploadFolder = path.join(
           __dirname,
           "../../uploads",
@@ -56,9 +72,16 @@ module.exports = {
   },
   addProfilePicture: (tokenData, url) => {
     if (!tokenData.login) return null;
-    const user = users.find((user) => user.login === profileData.login);
+    const user = users.find((user) => user.login === tokenData.login);
     if (!user) return null;
     user.profile = url;
-    return this.addProfilePicture(tokenData);
+    const photos = photosArray.filter((photo) => photo.album === user.login);
+    return {
+      login: user.login,
+      fullName: user.fullName,
+      email: user.email,
+      photos,
+      profile: user.profile,
+    };
   },
 };

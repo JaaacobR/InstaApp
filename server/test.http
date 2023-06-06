@@ -108,10 +108,10 @@ GET http://localhost:3000/api/filters/metadata/1681719519975
 PATCH http://localhost:3000/api/filters
 
 {
-  "id": 1684003203513,
-  "url":"/Users/jakub/Desktop/InstaApp/server/uploads/samochody/upload_1684003203512.jpg",
-  "type": "tint",
-  "params": {"r": 255, "g":0, "b":0}
+  "id": 1685806631558,
+  "url":"/Users/jakub/Desktop/InstaApp/server/uploads/samochody/upload_1685806631557.jpg",
+  "type": "grayscale",
+  "params": null
 }
 
 ####

@@ -45,12 +45,19 @@
             android:layout_gravity="center">
 
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fullName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
-                android:id="@+id/full_name"
-                />
+                android:layout_height="wrap_content"
+                android:hint="fullName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,11 +77,19 @@
             android:layout_gravity="center">
 
 
-            <EditText
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login"
-                android:layout_height="match_parent"
-                />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="login">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,13 +109,19 @@
             android:layout_gravity="center">
 
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email"
-                />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="email">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -121,12 +142,21 @@
             android:layout_gravity="center">
 
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textAlignment="center"
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password"
-                />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:endIconMode="password_toggle"
+                android:hint="@string/label">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:inputType="textPassword"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="25dp"
